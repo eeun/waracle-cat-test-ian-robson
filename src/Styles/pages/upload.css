@@ -1,0 +1,16 @@
+.upload-split {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  @media (min-width: 576px) {
+    flex-direction: row;
+
+    > form {
+      width: 70%;
+      flex-shrink: 0;
+    }
+  }
+  button {
+    margin: 0;
+  }
+}

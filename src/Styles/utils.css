@@ -1,0 +1,31 @@
+.text-center {
+  text-align: center;
+}
+.text-error {
+  color: var(--pico-del-color);
+}
+.m-0 {
+  margin: 0 !important;
+}
+.max-w-md {
+  width: 96vw;
+  max-width:578px;
+}
+button.link {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--pico-background-color);
+}
+@media (max-width: 576px) {
+  .visible-sm-up {
+    display: none;
+  }
+}
+.fade-in-on-create{
+  transition:opacity 0.2s;
+  opacity: 1;
+  @starting-style{
+    opacity: 0;
+  }
+}

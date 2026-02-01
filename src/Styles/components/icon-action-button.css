@@ -1,0 +1,19 @@
+.icon-action-button {
+  position: relative;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  color: inherit;
+
+  :first-child {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  &.selected :first-child {
+    opacity: 1;
+  }
+  &:hover :first-child {
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,32 @@
+#root > header {
+  transition: 0.3s box-shadow;
+  border-bottom-color: var(--pico-header-border-color);
+  box-shadow: var(--pico-card-box-shadow);
+
+  position: sticky;
+  top: 0;
+  margin-bottom: 2rem;
+  z-index: 1;
+  background-color: color-mix(
+    in srgb,
+    var(--pico-background-color),
+    transparent 20%
+  );
+  backdrop-filter: blur(1rem);
+
+  > .container {
+    display: flex;
+    > div {
+      flex-grow: 1;
+    }
+    > nav {
+      gap: 1rem;
+      a {
+        text-decoration: none;
+        &.active {
+          color: inherit;
+        }
+      }
+    }
+  }
+}
