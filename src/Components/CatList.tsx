@@ -2,7 +2,7 @@ import { type UserImage } from '@thatapicompany/thecatapi/dist/types.d'
 import { useSubStore } from '../Stores/SubStore'
 import { useFavouriteStore } from '../Stores/FavouriteStore'
 import { theCatAPI } from '../lib/api'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useVoteStore } from '../Stores/VoteStore'
 import IconActionButton from './IconActionButton'
 import { groupBySum } from '../lib/collections'
@@ -17,18 +17,17 @@ function CatList({ cats }: { cats: Array<UserImage> }) {
   // for busy indicator while voting on a cat - catId and vote direction
   const [voting, setVoting] = useState(['', 0] as [string, number])
 
-  // these should be memo'd by the react compiler if needed
   // select imageId, sum(value) from voteStore.data group by imageId
-  const voteCounts = groupBySum(
+  const voteCounts = useMemo(() => groupBySum(
     voteStore.data ?? [],
     x => x.imageId,
     x => x.value
-  )
-  const myVotes = Object.fromEntries(
+  ), [voteStore.data])
+  const myVotes = useMemo(() => Object.fromEntries(
     voteStore.data
       ?.filter(x => x.subId === subStore.subId)
       .map(x => [x.imageId, x]) ?? []
-  )
+  ), [voteStore.data, subStore.subId])
   const myFaves = Object.fromEntries(
     favStore.data
       ?.map(x => [x.imageId, x]) ?? []

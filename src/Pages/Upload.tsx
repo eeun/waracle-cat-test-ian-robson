@@ -38,9 +38,6 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>
 
 function Upload() {
-    // react-hook-form doesn't work well with the compiler
-  'use no memo'
-
   const {
     register,
     handleSubmit,

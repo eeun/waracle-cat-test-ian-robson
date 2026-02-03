@@ -15,9 +15,6 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>
 
 function Login() {
-  // react-hook-form doesn't work well with the compiler
-  'use no memo'
-
   const subStore = useSubStore()
   const loggedIn = Boolean(subStore.subId)
 
